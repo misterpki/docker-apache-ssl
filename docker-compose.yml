@@ -1,11 +1,13 @@
 version: '3.8'
 
 services:
-        nginx:
-                image: nginx
+        apache:
+                image: httpd
                 ports:
-                        - "80:80"
-                        - "443:443"
+                        - "8080:80"
+                        - "8443:443"
                 volumes:
-                        - /home/misterpki/nginx-docker/nginx.conf:/etc/nginx/nginx.conf
-                        - /home/misterpki/nginx-docker/ssl:/ssl
+                        - /home/misterpki/apache-docker/web:/usr/local/apache2/htdocs
+                        - /home/misterpki/apache-docker/httpd.conf:/usr/local/apache2/conf/httpd.conf
+                        - /home/misterpki/apache-docker/ssl:/usr/local/apache2/conf/ssl
+                        - /home/misterpki/apache-docker/httpd-ssl.conf:/usr/local/apache2/conf/extra/httpd-ssl.conf
